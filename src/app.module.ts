@@ -5,7 +5,6 @@ import { CategoriesModule } from './categories/categories.module';
 import { ProductImagesModule } from './productImages/productImages.module';
 import { ProductSizesModule } from './productSizes/productSizes.module';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { adminConfig } from './admin/admin.config';
 import { getDbConfig } from './db.config';
 
 @Module({
@@ -14,9 +13,6 @@ import { getDbConfig } from './db.config';
       envFilePath: `.${process.env.NODE_ENV}.env`,
     }),
     SequelizeModule.forRoot(getDbConfig()),
-    import('@adminjs/nestjs').then(({ AdminModule }) =>
-      AdminModule.createAdminAsync(adminConfig),
-    ),
     ProductsModule,
     CategoriesModule,
     ProductImagesModule,
