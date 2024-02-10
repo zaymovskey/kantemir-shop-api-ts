@@ -5,35 +5,18 @@ import { CategoriesModule } from './categories/categories.module';
 import { ProductImagesModule } from './productImages/productImages.module';
 import { ProductSizesModule } from './productSizes/productSizes.module';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { Product } from './products/products.model';
-import { Category } from './categories/categories.model';
-import { ProductImage } from './productImages/productImages.model';
-import {
-  ProductSize,
-  ProductSizeProducts,
-} from './productSizes/productSizes.model';
+import { adminConfig } from './admin/admin.config';
+import { getDbConfig } from './db.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       envFilePath: `.${process.env.NODE_ENV}.env`,
     }),
-    SequelizeModule.forRoot({
-      dialect: 'postgres',
-      host: process.env.DB_HOST,
-      port: process.env.DB_PORT,
-      username: process.env.DB_USER,
-      password: process.env.DB_PASS,
-      database: process.env.DB_NAME,
-      models: [
-        Product,
-        Category,
-        ProductImage,
-        ProductSize,
-        ProductSizeProducts,
-      ],
-      autoLoadModels: true,
-    }),
+    SequelizeModule.forRoot(getDbConfig()),
+    import('@adminjs/nestjs').then(({ AdminModule }) =>
+      AdminModule.createAdminAsync(adminConfig),
+    ),
     ProductsModule,
     CategoriesModule,
     ProductImagesModule,

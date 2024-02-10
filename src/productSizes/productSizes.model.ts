@@ -1,5 +1,4 @@
 import {
-  BelongsTo,
   BelongsToMany,
   Column,
   ForeignKey,
@@ -15,9 +14,6 @@ interface IProductSizeCreationAttrs {
 @Table({ tableName: 'productSizes' })
 export class ProductSize extends Model<ProductSize, IProductSizeCreationAttrs> {
   // Main
-  @Column({ type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true })
-  id: number;
-
   @Column({ type: DataTypes.STRING(255) })
   name: string;
 

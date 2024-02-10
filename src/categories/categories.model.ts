@@ -9,8 +9,6 @@ interface ICategoryCreationAttrs {
 @Table({ tableName: 'categories' })
 export class Category extends Model<Category, ICategoryCreationAttrs> {
   // Main
-  @Column({ type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true })
-  id: number;
 
   @Column({ type: DataTypes.STRING(255) })
   name: string;

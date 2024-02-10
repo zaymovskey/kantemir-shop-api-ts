@@ -26,8 +26,6 @@ interface IProductCreationAttrs {
 @Table({ tableName: 'products' })
 export class Product extends Model<Product, IProductCreationAttrs> {
   // Main
-  @Column({ type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true })
-  id: number;
 
   @Column({ type: DataTypes.STRING(255) })
   name: string;
@@ -43,19 +41,6 @@ export class Product extends Model<Product, IProductCreationAttrs> {
 
   @Column({ type: DataTypes.BOOLEAN(), defaultValue: true })
   isPublished: boolean;
-
-  // Created/Updated
-  @Column({
-    type: DataTypes.DATE,
-    defaultValue: literal('NOW()'),
-  })
-  createdAt: DataTypes.DateDataType;
-
-  @Column({
-    type: DataTypes.DATE,
-    defaultValue: literal('NOW()'),
-  })
-  updatedAt: DataTypes.DateDataType;
 
   // Foreign
   @ForeignKey(() => Category)
