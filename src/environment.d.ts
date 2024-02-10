@@ -8,6 +8,9 @@ export declare global {
       DB_USER: string;
       DB_PASS: string;
       DB_NAME: string;
+
+      ADMIN_USERNAME: string;
+      ADMIN_PASSWORD: string;
     }
   }
 }

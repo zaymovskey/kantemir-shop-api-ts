@@ -3,13 +3,15 @@ import { AdminModuleFactory } from '@adminjs/nestjs/src/interfaces/admin-module-
 // @ts-ignore
 import { CustomLoader } from '@adminjs/nestjs/src/interfaces/custom-loader.interface';
 
-const DEFAULT_ADMIN = {
-  email: 'admin@example.com',
-  password: 'password',
-};
-
 const authenticate = async (email: string, password: string) => {
-  if (email === DEFAULT_ADMIN.email && password === DEFAULT_ADMIN.password) {
+  if (
+    email === process.env.ADMIN_USERNAME &&
+    password === process.env.ADMIN_PASSWORD
+  ) {
+    const DEFAULT_ADMIN = {
+      email: email,
+      password: password,
+    };
     return Promise.resolve(DEFAULT_ADMIN);
   }
   return null;
