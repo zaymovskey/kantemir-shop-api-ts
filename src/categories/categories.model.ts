@@ -1,12 +1,7 @@
-import {
-  BelongsTo,
-  Column,
-  ForeignKey,
-  Model,
-  Table,
-} from 'sequelize-typescript';
+import { Column, HasMany, Model, Table } from 'sequelize-typescript';
 import { DataTypes } from 'sequelize';
 import { Product } from '../products/products.model';
+import { ProductImage } from '../productImages/productImages.model';
 
 interface ICategoryCreationAttrs {
   name: string;
@@ -21,10 +16,6 @@ export class Category extends Model<Category, ICategoryCreationAttrs> {
   name: string;
 
   // Foreign
-  @ForeignKey(() => Product)
-  @Column({ type: DataTypes.BIGINT })
-  productId: number;
-
-  @BelongsTo(() => Product)
-  products: Product;
+  @HasMany(() => Product, { sourceKey: 'id' })
+  products: ProductImage[];
 }
