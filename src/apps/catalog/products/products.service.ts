@@ -17,7 +17,7 @@ export class ProductsService {
       where: {
         isPublished: true,
       },
-      attributes: ['id', 'slug', 'price', 'description'],
+      attributes: ['id', 'name', 'slug', 'price', 'description'],
       include: [
         { model: ProductImage, attributes: ['url'] },
         { model: Category, attributes: ['id', 'name'] },

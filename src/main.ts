@@ -7,6 +7,12 @@ async function start() {
   const app = await NestFactory.create(AppModule);
 
   app.useGlobalPipes(new ValidationPipe());
+  app.setGlobalPrefix('api');
+
+  app.enableCors({
+    origin: ['http://localhost:3000'],
+    credentials: true,
+  });
 
   await app.listen(PORT);
 }
