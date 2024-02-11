@@ -1,10 +1,10 @@
-import { Product } from './products/products.model';
-import { Category } from './categories/categories.model';
-import { ProductImage } from './productImages/productImages.model';
+import { Product } from './apps/catalog/products/products.model';
+import { Category } from './apps/catalog/categories/categories.model';
+import { ProductImage } from './apps/catalog/productImages/productImages.model';
 import {
   ProductSize,
   ProductSizeProducts,
-} from './productSizes/productSizes.model';
+} from './apps/catalog/productSizes/productSizes.model';
 import { SequelizeModuleOptions } from '@nestjs/sequelize/dist/interfaces/sequelize-options.interface';
 
 export const getDbConfig = (): SequelizeModuleOptions => {

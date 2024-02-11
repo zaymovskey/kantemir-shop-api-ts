@@ -1,17 +1,16 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { ProductsService } from './products.service';
+import { GetProductsListDto } from './dto/getProductsList.dto';
 
 @Controller('products')
 export class ProductsController {
   constructor(private productsService: ProductsService) {}
+
   @Get('productsList?')
-  get(
-    @Query('offset') offset: number | undefined,
-    @Query('limit') limit: number | undefined,
-  ) {
+  get(@Query() params: GetProductsListDto) {
     return this.productsService.getProductList({
-      offset: offset,
-      limit: limit,
+      offset: Number(params.offset),
+      limit: Number(params.limit),
     });
   }
 }

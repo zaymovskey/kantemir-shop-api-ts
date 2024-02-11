@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { ProductsModule } from './products/products.module';
+import { ProductsModule } from './apps/catalog/products/products.module';
 import { ConfigModule } from '@nestjs/config';
-import { CategoriesModule } from './categories/categories.module';
-import { ProductImagesModule } from './productImages/productImages.module';
-import { ProductSizesModule } from './productSizes/productSizes.module';
+import { CategoriesModule } from './apps/catalog/categories/categories.module';
+import { ProductImagesModule } from './apps/catalog/productImages/productImages.module';
+import { ProductSizesModule } from './apps/catalog/productSizes/productSizes.module';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { getDbConfig } from './db.config';
 

@@ -6,9 +6,8 @@ import {
   BelongsTo,
   BelongsToMany,
   HasMany,
-  HasOne,
 } from 'sequelize-typescript';
-import { DataTypes, literal } from 'sequelize';
+import { DataTypes } from 'sequelize';
 import { Category } from '../categories/categories.model';
 import {
   ProductSize,

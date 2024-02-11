@@ -12,7 +12,7 @@ export class ProductsService {
 
   async getProductList(dto: GetProductsListDto) {
     return await this.productRepo.findAll({
-      limit: dto.limit,
+      limit: dto.limit === 0 ? undefined : dto.limit,
       offset: dto.offset,
       where: {
         isPublished: true,
