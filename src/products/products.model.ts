@@ -6,6 +6,7 @@ import {
   BelongsTo,
   BelongsToMany,
   HasMany,
+  HasOne,
 } from 'sequelize-typescript';
 import { DataTypes, literal } from 'sequelize';
 import { Category } from '../categories/categories.model';
@@ -46,6 +47,9 @@ export class Product extends Model<Product, IProductCreationAttrs> {
   @ForeignKey(() => Category)
   @Column({ type: DataTypes.INTEGER })
   categoryId: number;
+
+  @BelongsTo(() => Category)
+  category: Category;
 
   @BelongsToMany(() => ProductSize, () => ProductSizeProducts)
   productSizes: ProductSize[];
