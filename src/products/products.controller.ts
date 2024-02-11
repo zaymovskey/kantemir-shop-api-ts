@@ -5,7 +5,10 @@ import { ProductsService } from './products.service';
 export class ProductsController {
   constructor(private productsService: ProductsService) {}
   @Get('productsList?')
-  get(@Query('offset') offset: number, @Query('limit') limit: number) {
+  get(
+    @Query('offset') offset: number | undefined,
+    @Query('limit') limit: number | undefined,
+  ) {
     return this.productsService.getProductList({
       offset: offset,
       limit: limit,
